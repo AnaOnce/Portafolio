@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio profesional de Ana - Desarrollador Web">
+    <title>Ana | Portfolio Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    <!-- Added particle background container -->
+    <div class="particle-container" id="particles" aria-hidden="true"></div>
+
+    <!-- Added matrix rain effect -->
+    <canvas id="matrix-canvas" class="matrix-bg" aria-hidden="true"></canvas>
+
+    <!-- Terminal Container -->
+    <div class="terminal-container">
+        <!-- Terminal Header Bar -->
+        <header class="terminal-header">
+            <div class="window-controls">
+                <span class="control close" aria-label="Cerrar" title="Cerrar"></span>
+                <span class="control minimize" aria-label="Minimizar" title="Minimizar"></span>
+                <span class="control maximize" aria-label="Maximizar" title="Maximizar"></span>
+            </div>
+            <!-- Enhanced terminal title with typing wrapper -->
+            <div class="terminal-title">
+                <span class="glitch" data-text="Ana@portfolio:~">Ana@portfolio:~</span>
+                <span class="cursor-mini">_</span>
+            </div>
+            <nav class="nav-desktop" aria-label="Navegación principal">
+                <a href="#about" class="nav-link"><span class="nav-text" data-i18n="nav_about">about</span></a>
+                <a href="#skills" class="nav-link"><span class="nav-text" data-i18n="nav_skills">skills</span></a>
+                <a href="#projects" class="nav-link"><span class="nav-text" data-i18n="nav_projects">projects</span></a>
+                <a href="#contact" class="nav-link"><span class="nav-text" data-i18n="nav_contact">contact</span></a>
+                <a href="cv/CV ANA 1.pdf" class="btn-cv" aria-label="Descargar CV" download>
+                    <span data-i18n="download_cv">Descarga Mi CV↓</span>
+                </a>
+                <button id="lang-toggle" class="btn-lang" aria-label="Cambiar idioma">
+                    <span class="lang-text">ES/EN</span>
+                </button>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+        </header>
+
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile" aria-label="Navegación móvil" hidden>
+            <a href="#about" class="nav-link" data-i18n="nav_about">about</a>
+            <a href="#skills" class="nav-link" data-i18n="nav_skills">skills</a>
+            <a href="#projects" class="nav-link" data-i18n="nav_projects">projects</a>
+            <a href="#contact" class="nav-link" data-i18n="nav_contact">contact</a>
+            <a href="cv/CV ANA 1.pdf" class="btn-cv" aria-label="Descargar CV" download data-i18n="download_cv">↓ Download CV</a>
+            <button id="lang-toggle-mobile" class="btn-lang mobile-lang-btn" aria-label="Cambiar idioma">
+                <span class="lang-text">ES/EN</span>
+            </button>
+        </nav>
+
+        <!-- Terminal Content -->
+        <main class="terminal-content" id="terminal-content">
+            <!-- Scanlines Effect -->
+            <div class="scanlines" aria-hidden="true"></div>
+
+            <!-- Added auto-scroll indicator -->
+            <div class="auto-scroll-indicator" id="scroll-indicator">
+                <span class="indicator-dot"></span>
+                <!-- <span class="indicator-text">AUTO-SCROLL</span> -->
+            </div>
+
+            <!-- Hero Section with Typing Effect -->
+            <section class="hero section-animate" id="hero">
+                <div class="command-line">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="typed-text" id="typed-output"></span>
+                    <span class="cursor" aria-hidden="true">▋</span>
+                </div>
+                <div class="output" id="hero-output">
+                    <!-- Added animation class to ASCII art -->
+                    <pre class="ascii-art ascii-glow">
+    _                    ___           _          _ _     
+   / \   _ __   __ _    |_ _|___  __ _ | |__   ___| | |___ 
+  / _ \ | '_ \ / _` |    | |/ __|/ _` || '_ \ / _ \ | / __|
+ / ___ \| | | | (_| |    | |\__ \ (_| || |_) |  __/ | \__ \
+/_/   \_\_| |_|\__,_|   |___|___/\__,_||_.__/ \___|_|_|___/
+
+      H I L E R I O   G A R C I A
+
+          </pre>
+                    <p class="tagline typewriter-tagline" data-i18n="hero_tagline">Full Stack Developer | Creative Coder</p>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section section-animate" id="about">
+                <div class="command-line command-animate">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">cat about.txt</span>
+                </div>
+                <div class="output output-animate">
+                    <p class="about-text fade-up" data-i18n="about_text">
+                        Desarrollador apasionado por crear experiencias web únicas y funcionales. Me especializo en construir aplicaciones modernas con código limpio y arquitecturas escalables.
+                    </p>
+                    <div class="system-info">
+                        <!-- Added staggered animation to info lines -->
+                        <div class="info-line info-animate" style="--delay: 0"><span class="label" data-i18n="info_role">ROLE:</span> Full Stack Developer</div>
+                        <div class="info-line info-animate" style="--delay: 1"><span class="label" data-i18n="info_location">LOCATION:</span> <span data-i18n="info_location_value">Ciudad de México, MX</span></div>
+                        <div class="info-line info-animate" style="--delay: 2"><span class="label" data-i18n="info_experience">EXPERIENCE:</span> <span data-i18n="info_experience_value">5+ años</span></div>
+                        <div class="info-line info-animate" style="--delay: 3"><span class="label" data-i18n="info_status">STATUS:</span> <span class="status-available pulse" data-i18n="info_status_value">Disponible para proyectos</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section section-animate" id="skills">
+                <div class="command-line command-animate">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">ls -la ./skills/</span>
+                </div>
+                <div class="output output-animate">
+                    <div class="skills-output">
+                        <!-- Added staggered animations to skill categories -->
+                        <div class="skill-category skill-animate" style="--delay: 0">
+                            <span class="dir-name">drwxr-xr-x  frontend/</span>
+                            <div class="skill-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Next.js</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Tailwind</span>
+                                <span class="tag">Vue</span>
+                            </div>
+                        </div>
+                        <div class="skill-category skill-animate" style="--delay: 1">
+                            <span class="dir-name">drwxr-xr-x  backend/</span>
+                            <div class="skill-tags">
+                                <span class="tag">Node.js</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">GraphQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-category skill-animate" style="--delay: 2">
+                            <span class="dir-name">drwxr-xr-x  devops/</span>
+                            <div class="skill-tags">
+                                <span class="tag">Docker</span>
+                                <span class="tag">AWS</span>
+                                <span class="tag">CI/CD</span>
+                                <span class="tag">Linux</span>
+                            </div>
+                        </div>
+                        <div class="skill-category skill-animate" style="--delay: 3">
+                            <span class="dir-name">drwxr-xr-x  tools/</span>
+                            <div class="skill-tags">
+                                <span class="tag">Git</span>
+                                <span class="tag">Figma</span>
+                                <span class="tag">VS Code</span>
+                                <span class="tag">Vim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section section-animate" id="projects">
+                <div class="command-line command-animate">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">./show_projects.sh</span>
+                </div>
+                <div class="output output-animate">
+                    <div class="projects-grid">
+                        <!-- Added floating animation to project cards -->
+                        <article class="project-card project-animate" style="--delay: 0">
+                            <div class="project-header">
+                                <span class="project-icon bounce-icon">📁</span>
+                                <h3 class="project-name">E-Commerce Platform</h3>
+                            </div>
+                            <p class="project-desc" data-i18n="project_1_desc">Plataforma de comercio electrónico completa con carrito, pagos y panel de administración.</p>
+                            <div class="project-stack">
+                                <span>Next.js</span>
+                                <span>Stripe</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Ver demo" data-i18n="project_demo">[ DEMO ]</a>
+                                <a href="#" class="project-link" aria-label="Ver código" data-i18n="project_code">[ GITHUB ]</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card project-animate" style="--delay: 1">
+                            <div class="project-header">
+                                <span class="project-icon bounce-icon">📁</span>
+                                <h3 class="project-name">Task Manager CLI</h3>
+                            </div>
+                            <p class="project-desc" data-i18n="project_2_desc">Aplicación de línea de comandos para gestión de tareas con sincronización en la nube.</p>
+                            <div class="project-stack">
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                                <span>Ink</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Ver demo" data-i18n="project_demo">[ DEMO ]</a>
+                                <a href="#" class="project-link" aria-label="Ver código" data-i18n="project_code">[ GITHUB ]</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card project-animate" style="--delay: 2">
+                            <div class="project-header">
+                                <span class="project-icon bounce-icon">📁</span>
+                                <h3 class="project-name">Real-time Chat App</h3>
+                            </div>
+                            <p class="project-desc" data-i18n="project_3_desc">Chat en tiempo real con salas, mensajes privados y compartir archivos.</p>
+                            <div class="project-stack">
+                                <span>React</span>
+                                <span>Socket.io</span>
+                                <span>Redis</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Ver demo" data-i18n="project_demo">[ DEMO ]</a>
+                                <a href="#" class="project-link" aria-label="Ver código" data-i18n="project_code">[ GITHUB ]</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card project-animate" style="--delay: 3">
+                            <div class="project-header">
+                                <span class="project-icon bounce-icon">📁</span>
+                                <h3 class="project-name">AI Image Generator</h3>
+                            </div>
+                            <p class="project-desc" data-i18n="project_4_desc">Generador de imágenes con IA usando modelos de difusión y una interfaz intuitiva.</p>
+                            <div class="project-stack">
+                                <span>Python</span>
+                                <span>FastAPI</span>
+                                <span>Stable Diffusion</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Ver demo" data-i18n="project_demo">[ DEMO ]</a>
+                                <a href="#" class="project-link" aria-label="Ver código" data-i18n="project_code">[ GITHUB ]</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Links Section -->
+            <section class="section section-animate" id="social">
+                <div class="command-line command-animate">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">cat social_links.txt</span>
+                </div>
+                <div class="output output-animate">
+                    <div class="social-links">
+                        <!-- Added wave animation to social links -->
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link social-animate" style="--delay: 0" aria-label="GitHub">
+                            <span class="social-icon">[GH]</span>
+                            <span class="social-text">GitHub</span>
+                            <span class="social-fill" aria-hidden="true"></span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link social-animate" style="--delay: 1" aria-label="LinkedIn">
+                            <span class="social-icon">[IN]</span>
+                            <span class="social-text">LinkedIn</span>
+                            <span class="social-fill" aria-hidden="true"></span>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link social-animate" style="--delay: 2" aria-label="Twitter">
+                            <span class="social-icon">[TW]</span>
+                            <span class="social-text">Twitter</span>
+                            <span class="social-fill" aria-hidden="true"></span>
+                        </a>
+                        <a href="https://dev.to" target="_blank" rel="noopener noreferrer" class="social-link social-animate" style="--delay: 3" aria-label="Dev.to">
+                            <span class="social-icon">[DV]</span>
+                            <span class="social-text">Dev.to</span>
+                            <span class="social-fill" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section section-animate" id="contact">
+                <div class="command-line command-animate">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">./contact.sh</span>
+                </div>
+                <div class="output output-animate">
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <p class="fade-up" data-i18n="contact_title">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+                            <a href="mailto:Ana@ejemplo.com" class="email-link glow-text">
+                → Ana@ejemplo.com
+              </a>
+                        </div>
+
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group form-animate" style="--delay: 0">
+                                <label for="name" class="form-label" data-i18n="form_name">nombre:</label>
+                                <input type="text" id="name" name="name" class="form-input" required aria-required="true">
+                            </div>
+                            <div class="form-group form-animate" style="--delay: 1">
+                                <label for="email" class="form-label" data-i18n="form_email">email:</label>
+                                <input type="email" id="email" name="email" class="form-input" required aria-required="true">
+                            </div>
+                            <div class="form-group form-animate" style="--delay: 2">
+                                <label for="message" class="form-label" data-i18n="form_message">mensaje:</label>
+                                <textarea id="message" name="message" class="form-input form-textarea" rows="4" required aria-required="true"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit btn-animate">
+                <span data-i18n="form_submit">[ ENVIAR ]</span>
+              </button>
+                        </form>
+
+                        <div class="form-response" id="form-response" hidden>
+                            <span class="response-prompt">system:</span>
+                            <span class="response-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="terminal-footer section-animate">
+                <div class="command-line">
+                    <span class="prompt">Ana@portfolio:~$</span>
+                    <span class="command">echo "© 2026 Ana. Built with ❤️ and ☕"</span>
+                </div>
+                <p class="footer-output" data-i18n="footer_text">© 2026 Ana. Built with ❤️ and ☕</p>
+                <!-- Added scroll to top button -->
+                <button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top">
+          <span>↑</span>
+        </button>
+            </footer>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
