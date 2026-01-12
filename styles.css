@@ -563,6 +563,58 @@ body {
 }
 
 
+/* Language Toggle Button */
+
+.btn-lang {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    background-color: transparent;
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: cv-btn-appear 0.5s ease 0.9s forwards;
+}
+
+.btn-lang:hover,
+.btn-lang:focus {
+    background-color: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: 0 0 15px var(--accent-cyan-dim);
+    transform: translateY(-2px);
+}
+
+.btn-lang:focus {
+    outline: none;
+}
+
+
+/* Mobile Language Button */
+
+.mobile-lang-btn {
+    margin-top: var(--spacing-md);
+    width: 100%;
+    animation: none;
+    opacity: 1;
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+}
+
+.mobile-lang-btn:hover {
+    border-color: var(--accent-cyan);
+    background-color: var(--accent-cyan);
+    color: var(--bg-primary);
+}
+
+
 /* Enhanced Mobile Menu Toggle */
 
 .menu-toggle {

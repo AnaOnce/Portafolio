@@ -527,10 +527,112 @@ function delay(ms) {
 }
 
 // ========================================
+// Internationalization (i18n)
+// ========================================
+const TRANSLATIONS = {
+    es: {
+        nav_about: "sobre mí",
+        nav_skills: "habilidades",
+        nav_projects: "proyectos",
+        nav_contact: "contacto",
+        download_cv: "Descarga Mi CV↓",
+        hero_tagline: "Desarrollador Full Stack | Programador Creativo",
+        about_text: "Desarrollador apasionado por crear experiencias web únicas y funcionales. Me especializo en construir aplicaciones modernas con código limpio y arquitecturas escalables.",
+        info_role: "ROL:",
+        info_location: "UBICACIÓN:",
+        info_location_value: "Ciudad de México, MX",
+        info_experience: "EXPERIENCIA:",
+        info_experience_value: "5+ años",
+        info_status: "ESTADO:",
+        info_status_value: "Disponible para proyectos",
+        project_1_desc: "Plataforma de comercio electrónico completa con carrito, pagos y panel de administración.",
+        project_2_desc: "Aplicación de línea de comandos para gestión de tareas con sincronización en la nube.",
+        project_3_desc: "Chat en tiempo real con salas, mensajes privados y compartir archivos.",
+        project_4_desc: "Generador de imágenes con IA usando modelos de difusión y una interfaz intuitiva.",
+        project_demo: "[ DEMO ]",
+        project_code: "[ CÓDIGO ]",
+        contact_title: "¿Tienes un proyecto en mente? ¡Hablemos!",
+        form_name: "nombre:",
+        form_email: "email:",
+        form_message: "mensaje:",
+        form_submit: "[ ENVIAR ]",
+        footer_text: "© 2026 Ana. Hecho con ❤️ y ☕"
+    },
+    en: {
+        nav_about: "about",
+        nav_skills: "skills",
+        nav_projects: "projects",
+        nav_contact: "contact",
+        download_cv: "Download CV↓",
+        hero_tagline: "Full Stack Developer | Creative Coder",
+        about_text: "Passionate developer creating unique and functional web experiences. I specialize in building modern applications with clean code and scalable architectures.",
+        info_role: "ROLE:",
+        info_location: "LOCATION:",
+        info_location_value: "Mexico City, MX",
+        info_experience: "EXPERIENCE:",
+        info_experience_value: "5+ years",
+        info_status: "STATUS:",
+        info_status_value: "Available for projects",
+        project_1_desc: "Complete e-commerce platform with cart, payments, and admin dashboard.",
+        project_2_desc: "Command-line task management application with cloud synchronization.",
+        project_3_desc: "Real-time chat with rooms, private messages, and file sharing.",
+        project_4_desc: "AI image generator using diffusion models and an intuitive interface.",
+        project_demo: "[ DEMO ]",
+        project_code: "[ CODE ]",
+        contact_title: "Have a project in mind? Let's talk!",
+        form_name: "name:",
+        form_email: "email:",
+        form_message: "message:",
+        form_submit: "[ SEND ]",
+        footer_text: "© 2026 Ana. Built with ❤️ and ☕"
+    }
+}
+
+function initLanguage() {
+    const langToggle = document.getElementById("lang-toggle")
+    const langToggleMobile = document.getElementById("lang-toggle-mobile")
+    const html = document.documentElement
+
+    // Get stored language or default to Spanish
+    let currentLang = localStorage.getItem("portfolio_lang") || "es"
+
+    // Function to update texts
+    const updateTexts = (lang) => {
+        const elements = document.querySelectorAll("[data-i18n]")
+        elements.forEach(el => {
+            const key = el.getAttribute("data-i18n")
+            if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+                el.textContent = TRANSLATIONS[lang][key]
+            }
+        })
+
+        // Update html lang attribute
+        html.setAttribute("lang", lang)
+
+        // Save preference
+        localStorage.setItem("portfolio_lang", lang)
+        currentLang = lang
+    }
+
+    // Initial update
+    updateTexts(currentLang)
+
+    // Event listeners
+    const toggleLang = () => {
+        const newLang = currentLang === "es" ? "en" : "es"
+        updateTexts(newLang)
+    }
+
+    if (langToggle) langToggle.addEventListener("click", toggleLang)
+    if (langToggleMobile) langToggleMobile.addEventListener("click", toggleLang)
+}
+
+// ========================================
 // Initialize Everything
 // ========================================
 function init() {
     // Initialize core functionality
+    initLanguage()
     initMobileNav()
     initSmoothScroll()
     initActiveSection()
